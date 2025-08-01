@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/images/logo.png';
 
@@ -10,9 +10,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo-container">
-        <Link to="/">
+        <NavLink to="/">
           <img src={logo} alt="Museum Logo" />
-        </Link>
+        </NavLink>
       </div>
 
       <button
@@ -26,12 +26,61 @@ export default function Navbar() {
       </button>
 
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <li><Link to="/">Visit</Link></li>
-        <li><Link to="/">Exhibitions</Link></li>
-        <li><Link to="/">Molslaboratory</Link></li>
-        <li><Link to="/">About</Link></li>
-        <li><Link to="/my-kraeg">My Kræg</Link></li>
-        <li><Link to="/">Login</Link></li>
+        <li>
+          <NavLink 
+            to="/" 
+            end
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)} // close menu on click
+          >
+            Visit
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/exhibitions" 
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)}
+          >
+            Exhibitions
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/molslaboratory" 
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)}
+          >
+            Molslaboratory
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)}
+          >
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/my-kraeg" 
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)}
+          >
+            My Kræg
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/login" 
+            className={({ isActive }) => (isActive ? 'active-link' : '')}
+            onClick={() => setIsOpen(false)}
+          >
+            Login
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
